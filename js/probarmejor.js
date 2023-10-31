@@ -17,16 +17,16 @@ function checkLogin() {
   } else {
     localStorage.removeItem("darktheme");
     showAlert("¡No estás loggeado!");
-    redirectToPageWithDelay('login.html', 3, 5);
+    redirectToPageWithDelay('login.html', 2, 3);
   }
 }
 function login() {
   localStorage.setItem('isLoggedIn', 'true');
-  redirectToPageWithDelay('login.html', 3, 5);
+  redirectToPageWithDelay('login.html', 2, 3);
 }
 function logout() {
   localStorage.removeItem('isLoggedIn');
-  redirectToPageWithDelay('login.html', 3, 5);
+  redirectToPageWithDelay('login.html', 2, 3);
 }
 window.onload = function () {
   checkLogin();

@@ -13,9 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     //Cambia en tiempo real el botón "Y mucho más!" según el modo Light/Dark seleccionado
-    const ligthdarkswitch = document.getElementById("modeswitch");
+    const ligthdarkswitch = document.getElementById("modeswitch"); // esto de siempre un error en el html no esta
     const btnligthmode = document.getElementById("btn-lightmode");
 
+
+    // Esto esta al pedo?????
     ligthdarkswitch.addEventListener("click", (event) => {
         event.stopPropagation();
         if (ligthdarkswitch.checked) {
