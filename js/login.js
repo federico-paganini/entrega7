@@ -35,12 +35,11 @@ function cambiarFondo() {
 window.addEventListener('load', cambiarFondo);
 window.addEventListener('resize', cambiarFondo);
 
-cambiarFondo();
 
 /* Redireccion a index con login realizado */
 
 document.addEventListener("DOMContentLoaded", function () {
-
+    cambiarFondo();
     const formlog = document.querySelector("#form-log");
 
     formlog.addEventListener("submit", function (event) {

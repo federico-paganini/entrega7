@@ -548,8 +548,6 @@ function actualizarCostoFinal() {
         break;
       }
     }
-    console.log("esta es la opcion seleccionada" + opcionSeleccionada);
-
     if (opcionSeleccionada == 1) {
       costoEnvio = subtotalCarrito * 0.15;
       ponercostoenvio.textContent = `${costoEnvio.toFixed(2)}`;
@@ -584,12 +582,9 @@ function verificarDatos() {
         break;
       }
     }
-    console.log("esta es la opcion seleccionada " + opcionSeleccionada);
   }
-  console.log(opcionSeleccionada);
   if (opcionSeleccionada == 1 || opcionSeleccionada == 2 || opcionSeleccionada == 3  )
   {
-      console.log("wwwww");
     esValido = true;
   }
 
@@ -613,7 +608,7 @@ function verificarDatos() {
   } else if (productoEnCarrito < 1) {
     let alerta = document.getElementById("badalert");
     alerta.hidden = false;
-    alerta.innerHTML = "No hay prdocutos en el carrito";
+    alerta.innerHTML = "No hay productos en el carrito";
     setTimeout(() => {
       alerta.hidden = true;
     }, 3000);

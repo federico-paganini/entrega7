@@ -203,24 +203,19 @@ document.addEventListener("DOMContentLoaded", () => {
       var primero = true;
       product.relatedProducts.forEach((related) => {
 
-        let div = document.createElement("div"); // <div></div>
-        if (primero) {
-          div.classList.add("carousel-item"); // <div class="carousel-item"></div>
-          div.classList.add("active"); // <div class="carousel-item active"></div>
+        let div = document.createElement("div");
+        div.classList.add("carousel-item")
+        if (primero){
+          div.classList.add("active"); 
         }
-        else div.classList.add("carousel-item"); // <div class="carousel-item"></div>
 
         let carta = document.createElement("div");
 
-        carta.classList.add("container-sm");
-        carta.classList.add("d-flex");
-        carta.classList.add("justify-content-center");
-
+        carta.classList.add("container-sm","d-flex","justify-content-center");
 
         let carta2 = document.createElement("div");
         carta2.setAttribute("style", "width: 18rem;");
-        carta2.classList.add("card");
-        carta2.classList.add("card-pointer");
+        carta2.classList.add("card","card-pointer");
         carta2.innerHTML = `<img src="${related.image}" class="card-img-top">
         <div class="card-body">
         <h5 class="card-title">${related.name}</h5>
@@ -267,13 +262,4 @@ function carrito() {
     localStorage.setItem('infoProducto', JSON.stringify(infoProducto));
     alert("Producto agregado al carrito con éxito.");
   }
-  
-  
 }
-
-
-
-
-
-
-
