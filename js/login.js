@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     alert("Logueado correctamente");
                     sessionStorage.setItem('isLoggedIn', 'true');
-                    sessionStorage.setItem("UsuarioActivo", usuarioinlog.nombreUsuario);
+                    localStorage.setItem("UsuarioActivo", usuarioinlog.nombreUsuario);
                     setTimeout(function () {
                         window.location.href = "index.html";
                     }, 2000);

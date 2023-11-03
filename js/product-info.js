@@ -67,11 +67,8 @@ function showInfo(info) {
   document.getElementById("infoImagenes").innerHTML += htmlImagenes;
 }
 
-// Show Comentarios
 document.addEventListener("DOMContentLoaded", function (e) {
   var ProductID = localStorage.getItem("ValorID");
-
-  // const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/products_comments/"; (ya está definido en init.js)
 
   // Función para obtener los comentarios
   const url = `${PRODUCT_INFO_COMMENTS_URL}${ProductID}.json`;
@@ -92,14 +89,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         const divGral = document.createElement("div");
         divGral.classList.add("divGral");
 
-        CreateDiv(divGral, comment.dateTime); //Se crea un nuevo div para mostrar la fecha de la creación de los comentarios
-
+        CreateDiv(divGral, comment.dateTime);
         const stars = ScoreToEstrellas(comment.score);
-        divGral.appendChild(stars); //Se crea un nuevo div para mostrar el "score" (estrellas)
+        divGral.appendChild(stars);
 
-        CreateDiv(divGral, `User:  ${comment.user}`); //Se crea un nuevo div para mostrar el nombre de los usuarios
+        CreateDiv(divGral, `User:  ${comment.user}`);
 
-        CreateDiv(divGral, `Descripción:  ${comment.description}`); //Se crea un nuevo div para mostrar el contenido del comentario
+        CreateDiv(divGral, `Descripción:  ${comment.description}`);
         container.appendChild(divGral);
       });
     })
@@ -123,11 +119,11 @@ estrellas.forEach(function (estrella, index) {
 });
 
 function CreateDiv(container, info) {
-  //Función con dos argumentos, para crear un nuevo elemento "div" con información. "Container" (variable con dicho nombre) es el destino donde se inserta el nuevo "div" y "info" son los datos de texto.
-  let div = document.createElement("div"); //Variable para crear elemento "div"
-  div.textContent = info; //Contenido de texto dentro del elemento "div"
+  
+  let div = document.createElement("div");
+  div.textContent = info;
   div.classList.add("subdiv");
-  container.appendChild(div); //el nuevo "div" se agrega como hijo al div de la variable "container".
+  container.appendChild(div);
 }
 
 function ScoreToEstrellas(score) {
@@ -185,12 +181,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const stars = ScoreToEstrellas(puntaje);
-    divGral.appendChild(stars); //Se crea un nuevo div para mostrar el "score" (estrellas)
+    divGral.appendChild(stars);
 
-    const user = localStorage.getItem("email");
-    CreateDiv(divGral, `User:  ${user}`); //Se crea un nuevo div para mostrar el nombre de los usuarios
+    const user = localStorage.getItem("UsuarioActivo");
+    CreateDiv(divGral, `User:  ${user}`);
     const desc = comentario.value;
-    CreateDiv(divGral, `Descripción:  ${desc}`); //Se crea un nuevo div para mostrar el contenido del comentario
+    CreateDiv(divGral, `Descripción:  ${desc}`);
     container.appendChild(divGral);
     comentario.value = "";
   });

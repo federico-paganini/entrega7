@@ -179,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctn = document.getElementById("products-container");
 
     //* Agregamos un Set para que no se repitan productos al filtrar por nombre y descripción *//
-    //* En un Set, los productos pueden aparecer solamente una vez *//
     const flitrarSinRepetir = new Set();
 
     allProducts.forEach((producto) => {
@@ -187,30 +186,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const descripcionProducto = producto.description.toLowerCase();
 
       //* Compara si el nombre o la descripción contienen el texto de búsqueda *//
-      //* Se ubica primero en el if la constante nombreProducto para que se priorice el nombre sobre la descripción *//
       if (
         nombreProducto.includes(texto) ||
         descripcionProducto.includes(texto)
       ) {
-        flitrarSinRepetir.add(producto); // Agregar el producto al conjunto
+        flitrarSinRepetir.add(producto);
       }
     });
 
-    const productosFiltrados = [...flitrarSinRepetir]; // Convertir el conjunto en un Array
+    const productosFiltrados = [...flitrarSinRepetir];
     if (barrabusq.value !== "") {
       if (productosFiltrados.length === 0) {
         ctn.innerHTML = `<p>Producto no encontrado...</p>`;
       } else {
         ctn.innerHTML = "";
-        displayProducts(productosFiltrados); // Mostrar los productos filtrados
+        displayProducts(productosFiltrados);
       }
     } else {
-      displayProducts(allProducts); // Volver a mostrar productos cuando la barra se vacía.
+      displayProducts(allProducts);
     }
   });
 
   //* Mostrar todos los productos nuevamente cuando la barra de búsqueda pierde el foco *//
-
   barrabusq.addEventListener("blur", function () {
     displayProducts(allProducts);
   });

@@ -1,3 +1,18 @@
+function checkLogin() {
+  if (localStorage.getItem('isLoggedIn') || sessionStorage.getItem('isLoggedIn')) {
+
+  } else {
+    const usuario = document.getElementById("usuario");
+
+    usuario.remove();
+    localStorage.removeItem("darktheme");
+    setTimeout(() => {
+      alert("¡No estás loggeado!");
+      window.location.href = "login.html";
+    }, 100);
+  }
+}
+
 function agregarMenuDespegable(nav) {
   let MenuDesplegable = document.createElement("ul");
   MenuDesplegable.classList.add(
@@ -56,11 +71,9 @@ function agregarMenuDespegable(nav) {
     if (showarrow.style.display === "none") {
       showarrow.style.display = "inline-block";
       hidearrow.style.display = "none";
-      nav.classList.remove("userclicked");
     } else {
       showarrow.style.display = "none";
       hidearrow.style.display = "inline-block";
-      nav.classList.add("userclicked");
     }
   });
 }
@@ -113,32 +126,22 @@ function agregarModoOscuro() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  if (!(localStorage.getItem("isLoggedIn") || sessionStorage.getItem("isLoggedIn"))){
-    const usuario = document.getElementById("usuario");
-    usuario.remove();
-  }
-  
+  checkLogin();
+
   baseDatos = JSON.parse(localStorage.getItem("Usuariosdb"));
 
   dataLocation = localStorage.getItem("dataLocation");
-  /* Verificar si los datos están en session storage o local storage y traer los datos de usuario:
-    Tema seleccionado, carrito, etc. */
-  if (dataLocation) {
-    usuarioActivo = baseDatos.find(
-      (usuario) =>
-        usuario.nombreUsuario === localStorage.getItem("UsuarioActivo")
-    );
-  } else {
-    usuarioActivo = baseDatos.find(
-      (usuario) =>
-        usuario.nombreUsuario === sessionStorage.getItem("UsuarioActivo")
-    );
-  }
+
+  usuarioActivo = baseDatos.find(
+    (usuario) =>
+      usuario.nombreUsuario === localStorage.getItem("UsuarioActivo")
+  );
+
 
   let email = usuarioActivo.nombreUsuario;
   let li_nav = document.getElementById("usuario");
 
-  li_nav.classList.add("nav-item","dropdown");
+  li_nav.classList.add("nav-item", "dropdown");
   li_nav.innerHTML = `
         <span class ="nav-link ms-lg-0 ms-2" id="userdisplay" role="button" data-bs-toggle="dropdown" 
         aria-expanded="false" data-bs-auto-close="outside">${email}
