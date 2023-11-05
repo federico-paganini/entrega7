@@ -150,7 +150,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 nuevosdatosUsuario = {
                     nombreUsuario: nuser,
                     nombre: nname,
+                    snombre: "",
                     apellido: nsurn,
+                    sapellido: "",
                     email: nemail,
                     telefonos: [nphone],
                     direcciones: [{
@@ -162,6 +164,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         numero: nnum,
                         indicaciones: infoad,
                     }],
+                    imagen_perfil: {
+                        selected: 0,
+                        image_source: ['img/img_perfil.png'],
+                    },
                     contraseña: confpass,
                     selectedtheme: false,
                     carrito: [],
