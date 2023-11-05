@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const baseDatos = JSON.parse(localStorage.getItem("Usuariosdb"));
-    let usuarioActivo;
+    let usuarioActivo = undefined;
     const dataLocation = localStorage.getItem("dataLocation");
 
     /* Verifica si los datos ya fueron cargados */

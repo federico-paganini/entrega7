@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         usuario.remove();
     }
     const baseDatos = JSON.parse(localStorage.getItem("Usuariosdb"));
-    let usuarioActivo;
+    let usuarioActivo = undefined;
     const dataLocation = localStorage.getItem("dataLocation");
     /* Verificar si los datos están en session storage o local storage y traer los datos de usuario:
     Tema seleccionado, carrito, etc. */
