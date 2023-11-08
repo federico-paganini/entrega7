@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let existe = false;
         if (Array.isArray(usuarios)) {
             for(const usuario of usuarios) {
-                if (usuario.nombreUsuario === nuser.value || usuario.email === nemail.value) {
+                if (usuario.nombreUsuario === nuser || usuario.email === nemail) {
                     existe = true;
                     break;
                 }
