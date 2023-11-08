@@ -444,3 +444,10 @@ a.custom-card:hover {
 .oculto {
   display: none;
 }
+
+/* Ajustar el tamaño de los iconos para que todos queden igual */
+#IconosPerfil img{
+  height: 140px;
+  margin: 0px 0px 30px 15px;
+  max-height:140px ;
+}

@@ -62,3 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
         savechanges.classList.add("oculto");
     })
 });
+
+/* Líneas de código que manejan la seleccion de las opciones de iconos*/
+let Iconos=document.getElementsByClassName("icono")
+
+
+function EventoIconos(icono){
+    icono.addEventListener("click", () =>{
+        let ImagenPerfil=document.getElementById("profilesimg")
+        ImagenPerfil.src=icono.src;
+    });
+};
+
+for (i = 0; i < Iconos.length; i++) {
+    EventoIconos(Iconos[i])
+} 
