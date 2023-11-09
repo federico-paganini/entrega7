@@ -228,11 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-
-
-
-
-
     //LOGICA PARA GUARDAR LOS DATOS EN EL FORMULARIO Y VALIDARLO 
 
 
