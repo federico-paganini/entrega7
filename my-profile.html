@@ -74,31 +74,18 @@
                     <h1 class="modal-title fs-5" id="profileimgs">Elegir foto de perfil</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div id="profileimgoptions" class="modal-body">
-                    
+                  <div class="modal-body">
+                    <div id="profileimgoptions" class="row justify-content-between">
+
+                    </div>
                   </div>
-                  <!-- Visualización de los iconos -->
-                  <div id="IconosPerfil">
-                    <img src="img/iconos/icon 1.jpg" alt="" class="icono">
-                    <img src="img/iconos/icon 2.jpg" alt="" class="icono">
-                    <img src="img/iconos/icon 3.jpg" alt="" class="icono">
-                    <img src="img/iconos/icon 4.jpg" alt="" class="icono">
-                    <img src="img/iconos/icon 5.jpg" alt="" class="icono">
-                    <img src="img/iconos/icon 6.jpg" alt="" class="icono">
-                    <img src="img/iconos/icon 7.jpg" alt="" class="icono">
-                  </div>
+
                   <div class="modal-footer">
                     <div class="container">
-                      <div class="row justify-content-between">
-                        <div class="col-auto">
-                          <div class="input-group">
-                            <label class="input-group-text" for="new-profileimg"><i class="bi bi-images"></i></label>
-                            <input type="file" name="filebox" class="form-control" id="new-profileimg">
-                          </div>
-                        </div>
-                        <div class="col-2">
-                          <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
+                      <div class="input-group">
+                        <label class="input-group-text" for="new-profileimg"><i class="bi bi-images"></i></label>
+                        <input type="file" name="filebox" class="form-control" id="new-profileimg">
+                        <button type="button" class="btn btn-primary" id="save-img">Guardar imágen</button>
                       </div>
                     </div>
                   </div>
