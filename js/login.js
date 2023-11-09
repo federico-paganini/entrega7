@@ -133,8 +133,9 @@ document.addEventListener("DOMContentLoaded", function () {
         /* Verificación que el usuario a registrar no exista en la base de datos */
         let existe = false;
         if (Array.isArray(usuarios)) {
-            for (const usuario of usuarios) {
-                if (usuario.nombreUsuario === nuser.value || usuario.email === nemail.value) {
+
+            for(const usuario of usuarios) {
+                if (usuario.nombreUsuario === nuser || usuario.email === nemail) {
                     existe = true;
                     break;
                 }
