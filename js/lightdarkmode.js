@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-
     const settedmode = localStorage.getItem("darktheme");
 
     if (settedmode === "true") {

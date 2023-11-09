@@ -1,14 +1,12 @@
 function actualizarSubtotal(cantIngresada, costoUnitario) {
   let cantidad = cantIngresada.value;
 
-  if (cantidad <1)
-  {
-    console.log("entro");
+  if (cantidad < 1) {
     cantIngresada.value = 1;
     cantidad = 1;
   }
-  const impResult =
-    cantIngresada.parentElement.parentElement.nextElementSibling;
+
+  const impResult = cantIngresada.parentElement.parentElement.nextElementSibling;
   const moneda = impResult.innerText.split(" ")[0];
   const resultado = costoUnitario * cantidad;
 
@@ -29,8 +27,6 @@ function actualizarSubtotal(cantIngresada, costoUnitario) {
   actualizarCostoFinal();
 }
 
-let seleccionoForma = false;
-
 function subTotal(costoUnitario, cantidad) {
   return costoUnitario * cantidad;
 }
@@ -48,9 +44,8 @@ function agregarProducto(nombre, moneda, imagen, costoUnitario, cantidad) {
                         <input type="number" class="form-control small-input-carrito" value=${cantidad} min="1" onchange="actualizarSubtotal(this, ${costoUnitario})">
                     </div>
                 </td>
-                <td class="negrita" id="impResult">${
-                  moneda + " " + resultado
-                }</td>
+                <td class="negrita" id="impResult">${moneda + " " + resultado
+    }</td>
                 <td>
                     <button class="btn btn-danger eliminar-producto" onclick="eliminarProducto(this)"><i class="bi bi-trash3-fill"></i></button>
                 </td>
@@ -76,30 +71,18 @@ function eliminarProducto(botonEliminar) {
   actualizarCostoFinal();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const productosCarrito = document.getElementById("productosCarrito");
-  const nsubtotal = document.getElementById("Subtotal");
+let seleccionoForma = false;
 
+document.addEventListener("DOMContentLoaded", function () {
+  /* Fetch 77 - 219 */
   fetch(`https://japceibal.github.io/emercado-api/user_cart/25801.json`)
     .then((response) => response.json())
     .then((cartData) => {
       cartData.articles.forEach((product) => {
         const infoProducto =
           JSON.parse(localStorage.getItem("infoProducto")) || [];
-        if (!localStorage.getItem("preaddProd")) {
-          localStorage.setItem("preaddProd", true);
-          console.log(product);
-
-          const DatosProducto = {
-            id: product.id,
-            nombre: product.name,
-            moneda: product.currency,
-            precio: product.unitCost,
-            imagen: product.image,
-            cantidad: 1,
-          };
-          infoProducto.push(DatosProducto);
-          localStorage.setItem("infoProducto", JSON.stringify(infoProducto));
+        let addPre = localStorage.getItem("preaddProd");
+        if (addPre == "true" || addPre == true) {
           infoProducto.forEach((DatosProducto) => {
             agregarProducto(
               DatosProducto.nombre,
@@ -110,6 +93,17 @@ document.addEventListener("DOMContentLoaded", function () {
             );
           });
         } else {
+          localStorage.setItem("preaddProd", true);
+          const DatosProducto = {
+            id: product.id,
+            nombre: product.name,
+            moneda: product.currency,
+            precio: product.unitCost,
+            imagen: product.image,
+            cantidad: 1,
+          };
+          infoProducto.push(DatosProducto);
+          localStorage.setItem("infoProducto", JSON.stringify(infoProducto));
           infoProducto.forEach((DatosProducto) => {
             agregarProducto(
               DatosProducto.nombre,
@@ -150,7 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
-  /* Añadir tarjeta con dirección de envío */
+  /* Añadir tarjeta con dirección de envío 
+  (Modales relacionados y tarjeta 147 - 291) */
   const adresscard = document.getElementById("sendAdress");
   const contactinfo = document.getElementById("contactInfo");
   const userdata = usuarioActivo;
@@ -295,13 +290,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//LINEAS DE CÓDIGO PARA CREAR EL MODAL PARA SELECCIONAR FORMA DE PAGO
+//LINEAS DE CÓDIGO PARA CREAR EL MODAL PARA SELECCIONAR FORMA DE PAGO 293-416
 document.addEventListener("DOMContentLoaded", () => {
   let BotonModal = document.getElementById("BotonFormaPago");
   let EspacioModal = document.createElement("div");
   EspacioModal.className = "modal fade";
 
-  function DesplegarModal() {
+  BotonModal.addEventListener("click", () => {
     //Función para crear y desplegar el modal que muestra las opciones de pago
 
     EspacioModal.innerHTML = `
@@ -344,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 `;
 
-    document.body.appendChild(EspacioModal); //Incluir el modal dentro del body de la página web
+    document.body.appendChild(EspacioModal);
 
     $(EspacioModal).modal("show");
 
@@ -356,7 +351,6 @@ document.addEventListener("DOMContentLoaded", () => {
       $(EspacioModal).modal("hide");
     }
 
-    //Lineas de código que manejan que unas opciones de deshabilitan al seleccionar otras
     let PagoTarjeta = document.getElementById("TarjetaCredito");
     let TransferenciaBanco = document.getElementById("TransferenciaBancaria");
 
@@ -381,7 +375,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    //Función para envíar los datos del modal/formulario al hacer click en el bóton aceptar
     let BotonEnviarDatosPago = document.getElementById("EnviarFormPago");
     let MensajePago = document.getElementById("MensajePago");
 
@@ -419,9 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       $(EspacioModal).modal("hide");
     });
-  }
-
-  BotonModal.addEventListener("click", DesplegarModal);
+  });
 });
 
 /* Función para determinar el ícono de la tarjeta de envío*/
@@ -463,11 +454,10 @@ function desplegarOpcionesEnvio(
                     <div class="col-11">
                         <div class="ms-3 card-body">
                             <h5 class="card-title">${selectIcon(
-                              direccion.tipo
-                            )} ${direccion.calle} ${direccion.numero}</h5>
-                            <p class="card-text">${direccion.ciudad} - ${
-      direccion.departamento
-    }</p>
+      direccion.tipo
+    )} ${direccion.calle} ${direccion.numero}</h5>
+                            <p class="card-text">${direccion.ciudad} - ${direccion.departamento
+      }</p>
                         </div>
                     </div>
                 </div>
@@ -489,12 +479,10 @@ function desplegarOpcionesEnvio(
 function desplegarDirecciondeEnvio(tarjenvio, direnvio) {
   tarjenvio.innerHTML = "";
   tarjenvio.innerHTML += `
-        <h5 class="card-title">${selectIcon(direnvio.tipo)} ${direnvio.calle} ${
-    direnvio.numero
-  }</h5>
-        <p class="card-text mb-2">${direnvio.ciudad} - ${
-    direnvio.departamento
-  }</p>
+        <h5 class="card-title">${selectIcon(direnvio.tipo)} ${direnvio.calle} ${direnvio.numero
+    }</h5>
+        <p class="card-text mb-2">${direnvio.ciudad} - ${direnvio.departamento
+    }</p>
     `;
 
   if (direnvio.indicaciones != "") {
@@ -549,8 +537,6 @@ function actualizarCostoFinal() {
         break;
       }
     }
-    console.log("esta es la opcion seleccionada" + opcionSeleccionada);
-
     if (opcionSeleccionada == 1) {
       costoEnvio = subtotalCarrito * 0.15;
       ponercostoenvio.textContent = `${costoEnvio.toFixed(2)}`;
@@ -585,12 +571,8 @@ function verificarDatos() {
         break;
       }
     }
-    console.log("esta es la opcion seleccionada " + opcionSeleccionada);
   }
-  console.log(opcionSeleccionada);
-  if (opcionSeleccionada == 1 || opcionSeleccionada == 2 || opcionSeleccionada == 3  )
-  {
-      console.log("wwwww");
+  if (opcionSeleccionada == 1 || opcionSeleccionada == 2 || opcionSeleccionada == 3) {
     esValido = true;
   }
 
@@ -614,7 +596,7 @@ function verificarDatos() {
   } else if (productoEnCarrito < 1) {
     let alerta = document.getElementById("badalert");
     alerta.hidden = false;
-    alerta.innerHTML = "No hay prdocutos en el carrito";
+    alerta.innerHTML = "No hay productos en el carrito";
     setTimeout(() => {
       alerta.hidden = true;
     }, 3000);
