@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let existe = false;
 
         if (Array.isArray(usuarios)) {
-            for(const usuario of usuarios) {
+            for (const usuario of usuarios) {
                 if (usuario.nombreUsuario === user.value || usuario.email === user.value) {
                     existe = true;
                     usuarioinlog = usuario;
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const nsurn = document.getElementById("New-Surn").value;
         let selectedirtype;
 
-        for(const type of typedom) {
+        for (const type of typedom) {
             if (type.checked) {
                 selectedirtype = type.value;
                 break;
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         /* Verificación que el usuario a registrar no exista en la base de datos */
         let existe = false;
         if (Array.isArray(usuarios)) {
-            for(const usuario of usuarios) {
+            for (const usuario of usuarios) {
                 if (usuario.nombreUsuario === nuser.value || usuario.email === nemail.value) {
                     existe = true;
                     break;
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }],
                     imagen_perfil: {
                         selected: 0,
-                        image_source: ['img/img_perfil.png'],
+                        image_source: ['img/img_perfil.png', 'img/iconos/icon 1.jpg', 'img/iconos/icon 2.jpg', 'img/iconos/icon 3.jpg', 'img/iconos/icon 4.jpg', 'img/iconos/icon 5.jpg', 'img/iconos/icon 6.jpg', 'img/iconos/icon 7.jpg'],
                     },
                     contraseña: confpass,
                     selectedtheme: false,
