@@ -63,7 +63,7 @@ function validar(div) {
     div.classList.remove(isInvalid);
     div.classList.add(isValid);
     let p = div.nextElementSibling;
-    if (p.tagName === "P") {
+    if (p != null && p.tagName === "P") {
         p.classList.remove(invalidFeedback);
         p.classList.add(validFeedback);
         p.innerHTML = "";
@@ -74,7 +74,7 @@ function invalidar(div, mensaje) {
     div.classList.remove(isValid);
     div.classList.add(isInvalid);
     let p = div.nextElementSibling;
-    if (p.tagName === "P") {
+    if (p != null && p.tagName === "P") {
         p.classList.remove(validFeedback);
         p.classList.add(invalidFeedback);
         p.innerHTML = mensaje;
@@ -107,7 +107,10 @@ function validarEmail() {
 }
 
 function validarTelefono() {
-    if (!(/^[0-9]+$/.test(nphone.value))) {
+    if(validarCantidad(nphone, 0, "El campo no puede estar vacio") == false){
+        return false;
+    }
+    else if (!(/^[0-9]+$/.test(nphone.value))) {
         invalidar(nphone, "Solo puede contener numeros");
         return false;
     }
@@ -157,11 +160,34 @@ function validarNumCalle() {
     }
 }
 
+function validarDepartamento(){
+    console.log(ndep.value);
+    if(ndep.value == "Departamento" || ndep.value =="")
+    {
+        invalidar(ndep,"EEEEEEEEEE");
+        return false;
+    }
+    else {
+        validar(ndep);
+        return true;
+    }
+}
+
+function validarResidenciaTipo(){
+    for (const type of typedom) {
+        if (type.checked) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function validarFormularioRegistro() {
 
     return (validarUsuario() && validarEmail() && validarPass1() && validarPass2()
         && validarTelefono() && validarCiudad() && validarDireccion()
-        && validarNombre() && validarApellido && validarNumCalle);
+        && validarNombre() && validarApellido() && validarNumCalle() &&
+        validarDepartamento() && validarResidenciaTipo());
 }
 
 /* Redireccion a index con login realizado */
@@ -280,6 +306,9 @@ document.addEventListener("DOMContentLoaded", function () {
             nnum.oninput = () =>{
                 validarNumCalle();
             }
+            ndep.oninput = ()=>{
+                validarDepartamento();
+            }
 
             actualizarTiempoReal = true;
 
@@ -294,6 +323,8 @@ document.addEventListener("DOMContentLoaded", function () {
             validarNombre();
             validarApellido();
             validarNumCalle();
+            validarDepartamento();
+            validarResidenciaTipo();
         }
 
         /*Verificación de datos para registro de nuevo usuario correcto */
@@ -317,7 +348,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        return;
         /*Se crea el nuevo usuario */
         alert("Registrado con éxito");
         nuevosdatosUsuario = {
