@@ -375,16 +375,16 @@ a.custom-card:hover {
   opacity: 1;
 }
 
-#imageCart{
+#imageCart {
 
   width: 50px;
 
 }
 
 .small-input-carrito {
-    min-width: 60px;
-    max-width: 100%; 
-    width: 5vw;  
+  min-width: 60px;
+  max-width: 100%;
+  width: 5vw;
 }
 
 .negrita {
@@ -393,13 +393,13 @@ a.custom-card:hover {
 
 
 /* Estilo personalizado botón de pago */
-#BotonFormaPago{
+#BotonFormaPago {
   background: linear-gradient(to right, #ff7010, #ff2b06);
   font-weight: bold;
 }
 
-#BotonFormaPago:hover{
-  background:  #ff2c10;
+#BotonFormaPago:hover {
+  background: #ff2c10;
 }
 
 /* Tarjeta de Dirección personalizada */
@@ -413,4 +413,42 @@ a.custom-card:hover {
 
 .nonclick {
   pointer-events: none;
+}
+
+.profile-img {
+  position: relative;
+  display: inline-block;
+}
+
+#changebtn {
+  bottom: 0;
+  right: 0;
+}
+
+.btn-onimg {
+  position: absolute;
+  background-color: rgba(134, 134, 134, 0.342);
+  width: fit-content;
+  padding: 0px 4px 1px 4px;
+  border-radius: 100%;
+  right: 5%;
+  bottom: 5%;
+}
+
+.datosfijos {
+  border: none;
+  background-color: transparent !important;
+  box-shadow: none;
+}
+
+.oculto {
+  display: none;
+}
+
+/* Ajustar el tamaño de los iconos para que todos queden igual */
+.icono {
+  height: 140px;
+  width: 140px;
+  max-height:140px;
+  cursor: pointer;
 }

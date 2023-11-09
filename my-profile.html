@@ -59,8 +59,102 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="row mt-5">
+        <div class="col-12 col-md-3 profilecolumn">
+          <div class="profile-img d-flex">
+            <span id="changebtn" type="button" data-bs-toggle="modal" data-bs-target="#profileimgs">
+              <h2><i class="bi bi-plus-circle-dotted btn-onimg"></h1></i>
+            </span>
+
+            <!-- Modal Imágenes de Perfil -->
+            <div class="modal fade" id="profileimgs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="profileimgs" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="profileimgs">Elegir foto de perfil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div id="profileimgoptions" class="row justify-content-between">
+
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="container">
+                      <div class="input-group">
+                        <label class="input-group-text" for="new-profileimg"><i class="bi bi-images"></i></label>
+                        <input type="file" name="filebox" class="form-control" id="new-profileimg">
+                        <button type="button" class="btn btn-primary" id="save-img">Guardar imágen</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img id="profilesimg" src="" class="img-fluid" alt="Default">
+          </div>
+        </div>
+        <div class="col-12 col-md-9">
+          <h1>Perfil</h1>
+          <hr>
+          <div class="row" id="userdata">
+
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="user-name" class="form-label">Primer nombre</label>
+              <input type="text" class="form-control datosfijos" id="user-name">
+              <div id="alerterror1userform" class="valid-feedback">
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="user-sname" class="form-label">Segundo nombre</label>
+              <input type="sting" class="form-control datosfijos" id="user-sname">
+            </div>
+
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="user-srname" class="form-label">Primer apellido</label>
+              <input type="sting" class="form-control datosfijos " id="user-srname">
+
+              <div id="alerterror3userform" class="valid-feedback">
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="user-ssrname" class="form-label">Segundo apellido</label>
+              <input type="sting" class="form-control datosfijos" id="user-ssrname">
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="user-name" class="form-label">E-mail</label>
+              <input type="text" class="form-control datosfijos " id="user-mail">
+              <div id="alerterror4userform" class="valid-feedback">
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+              <label for="user-sname" class="form-label">Teléfono de contacto</label>
+              <input type="int" class="form-control datosfijos " id="user-phone">
+              <div id="alerterror2userform" class="valid-feedback">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="row justify-content-between">
+                <div class="col">
+                  <button class="btn btn-link" id="edit-userinfo">Editar datos de usuario</button>
+                </div>
+                <div class="col">
+                  <button class="btn btn-primary oculto" id="save-userchanges">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </main>
