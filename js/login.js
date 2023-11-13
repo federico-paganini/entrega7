@@ -126,7 +126,7 @@ function validarPass1() {
 function validarPass2() {
     if (confpass.value !== npass.value) {
         invalidar(confpass, "Las contraseñas debe ser iguales");
-        return true;
+        return false;
     }
     else {
         return validarCantidad(confpass, 5, "La contraseña debe tener almenos 6 caracteres");
